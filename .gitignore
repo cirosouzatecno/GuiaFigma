@@ -1,0 +1,17 @@
+node_modules
+dist
+build
+.turbo
+.vercel
+.railway
+.env
+.env.*
+!.env.example
+coverage
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.DS_Store
+Thumbs.db

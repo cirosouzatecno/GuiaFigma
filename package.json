@@ -1,0 +1,31 @@
+{
+  "name": "guia-expo-rio-preto-2026",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Monorepo do Guia Expo Rio Preto 2026.",
+  "workspaces": [
+    "apps/web",
+    "apps/api"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace @guia-expo/web\" \"npm run dev --workspace @guia-expo/api\"",
+    "dev:web": "npm run dev --workspace @guia-expo/web",
+    "dev:api": "npm run dev --workspace @guia-expo/api",
+    "build": "npm run build --workspaces",
+    "build:web": "npm run build --workspace @guia-expo/web",
+    "build:api": "npm run build --workspace @guia-expo/api",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces",
+    "prisma:generate": "npm run prisma:generate --workspace @guia-expo/api",
+    "prisma:migrate": "npm run prisma:migrate --workspace @guia-expo/api",
+    "prisma:studio": "npm run prisma:studio --workspace @guia-expo/api",
+    "db:seed": "npm run db:seed --workspace @guia-expo/api"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": {
+    "node": ">=20.11.0",
+    "npm": ">=10.0.0"
+  }
+}

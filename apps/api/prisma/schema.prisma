@@ -1,0 +1,113 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum AvisoTipo {
+  ALERTA
+  AVISO
+  NOTICIA
+  DESTAQUE
+}
+
+model Evento {
+  id          String   @id @default(cuid())
+  titulo      String
+  subtitulo   String?
+  horario     String
+  local       String
+  dia         DateTime
+  categoria   String
+  iconKey     String
+  cor         String
+  descricao   String?  @db.Text
+  ativo       Boolean  @default(true)
+  criadoEm    DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+
+  @@index([dia])
+  @@index([categoria])
+  @@index([ativo])
+}
+
+model Expositor {
+  id          String   @id @default(cuid())
+  nome        String
+  estande     String
+  categoria   String
+  emoji       String
+  corPrimaria String
+  corFundo    String
+  descricao   String?  @db.Text
+  contato     String?
+  site        String?
+  ativo       Boolean  @default(true)
+  criadoEm    DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+
+  @@index([categoria])
+  @@index([ativo])
+}
+
+model Aviso {
+  id       String    @id @default(cuid())
+  tipo     AvisoTipo
+  titulo   String
+  mensagem String    @db.Text
+  tempo    String
+  ativo    Boolean   @default(true)
+  criadoEm DateTime  @default(now())
+
+  @@index([tipo])
+  @@index([ativo])
+  @@index([criadoEm])
+}
+
+model InfoGeral {
+  id          String   @id @default(cuid())
+  chave       String   @unique
+  valor       String   @db.Text
+  atualizadoEm DateTime @updatedAt
+}
+
+model AdminUser {
+  id          String          @id @default(cuid())
+  usuario     String          @unique
+  senhaHash   String
+  nome        String
+  criadoEm    DateTime        @default(now())
+  sessoes     AdminSession[]
+  atividades  AtividadeAdmin[]
+}
+
+model AdminSession {
+  id           String     @id
+  adminUserId  String
+  refreshHash  String
+  expiresAt    DateTime
+  revokedAt    DateTime?
+  criadoEm     DateTime   @default(now())
+  adminUser    AdminUser  @relation(fields: [adminUserId], references: [id], onDelete: Cascade)
+
+  @@index([adminUserId])
+  @@index([expiresAt])
+  @@index([revokedAt])
+}
+
+model AtividadeAdmin {
+  id          String    @id @default(cuid())
+  adminUserId String?
+  acao        String
+  entidade    String
+  entidadeId  String?
+  descricao   String    @db.Text
+  criadoEm    DateTime  @default(now())
+  adminUser   AdminUser? @relation(fields: [adminUserId], references: [id], onDelete: SetNull)
+
+  @@index([criadoEm])
+  @@index([entidade])
+}

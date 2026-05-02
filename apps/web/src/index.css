@@ -1,0 +1,100 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --color-primary: #1e3a10;
+  --color-primary-medium: #2d5a1b;
+  --color-gold: #d4a017;
+  --color-expo-gray: #f5f5f5;
+  --color-expo-white: #ffffff;
+  --background: var(--color-expo-white);
+  --foreground: var(--color-primary);
+  --card: var(--color-expo-white);
+  --card-foreground: var(--color-primary);
+  --popover: var(--color-expo-white);
+  --popover-foreground: var(--color-primary);
+  --primary: var(--color-primary);
+  --primary-foreground: var(--color-expo-white);
+  --secondary: var(--color-expo-gray);
+  --secondary-foreground: var(--color-primary);
+  --muted: var(--color-expo-gray);
+  --muted-foreground: #5f6f58;
+  --accent: var(--color-gold);
+  --accent-foreground: var(--color-primary);
+  --destructive: #b91c1c;
+  --destructive-foreground: var(--color-expo-white);
+  --border: #dfe7dc;
+  --input: #dfe7dc;
+  --ring: var(--color-primary-medium);
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: #102409;
+  --foreground: #ffffff;
+  --card: #17320d;
+  --card-foreground: #ffffff;
+  --popover: #17320d;
+  --popover-foreground: #ffffff;
+  --primary: #ffffff;
+  --primary-foreground: #1e3a10;
+  --secondary: #244918;
+  --secondary-foreground: #ffffff;
+  --muted: #244918;
+  --muted-foreground: #dfe7dc;
+  --accent: #d4a017;
+  --accent-foreground: #1e3a10;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #315c21;
+  --input: #315c21;
+  --ring: #d4a017;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+}
