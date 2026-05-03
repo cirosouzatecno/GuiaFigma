@@ -4,11 +4,16 @@ import { PrivateRoute } from "@/components/PrivateRoute";
 import { AdminLayout } from "@/layouts/AdminLayout";
 import { PublicLayout } from "@/layouts/PublicLayout";
 import { AgendaPage } from "@/pages/AgendaPage";
+import { AoVivoPage } from "@/pages/AoVivoPage";
 import { BuscaPage } from "@/pages/BuscaPage";
 import { ExpositoresPage } from "@/pages/ExpositoresPage";
 import { HomePage } from "@/pages/HomePage";
 import { InformacoesPage } from "@/pages/InformacoesPage";
+import { MaisPage } from "@/pages/MaisPage";
+import { MapaPage } from "@/pages/MapaPage";
+import { MinhaAgendaPage } from "@/pages/MinhaAgendaPage";
 import { PlaceholderPage } from "@/pages/PlaceholderPage";
+import { RotasPage } from "@/pages/RotasPage";
 
 export const router = createBrowserRouter([
   {
@@ -28,15 +33,15 @@ export const router = createBrowserRouter([
           },
           {
             path: "mapa",
-            element: <PlaceholderPage name="Mapa" />
+            element: <MapaPage />
           },
           {
             path: "rotas",
-            element: <PlaceholderPage name="Rotas" />
+            element: <RotasPage />
           },
           {
             path: "ao-vivo",
-            element: <PlaceholderPage name="Ao Vivo" />
+            element: <AoVivoPage />
           },
           {
             path: "expositores",
@@ -44,7 +49,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "minha-agenda",
-            element: <PlaceholderPage name="Minha Agenda" />
+            element: <MinhaAgendaPage />
           },
           {
             path: "informacoes",
@@ -56,7 +61,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "mais",
-            element: <PlaceholderPage name="Mais" />
+            element: <MaisPage />
           }
         ]
       },

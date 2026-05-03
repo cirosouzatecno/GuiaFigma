@@ -38,6 +38,18 @@ export interface Informacao {
   [key: string]: string;
 }
 
+export type AvisoTipo = "ALERTA" | "AVISO" | "NOTICIA" | "DESTAQUE";
+
+export interface Aviso {
+  id: string;
+  tipo: AvisoTipo;
+  titulo: string;
+  mensagem: string;
+  tempo: string;
+  ativo: boolean;
+  criadoEm: string;
+}
+
 export interface BuscaResponse {
   termo: string;
   resultados: {
